@@ -1,0 +1,54 @@
+<html>
+<head>
+    <title></title>
+<style>
+#sketch {
+	border:1px solid #000;
+}
+</style>
+</head>
+<body>
+<canvas id="sketch" width="480" height="720">
+</canvas>
+<script>
+
+
+document.addEventListener('DOMContentLoaded', main);
+
+var sketch;
+var context;
+var circle;
+var dx = 2;
+var fps = 10;
+
+
+function main() {
+	sketch = document.getElementById('sketch');
+	context = sketch.getContext("2d");
+
+	// store x and y values here... as well as radius or width and height
+	circle = {'x':25, 'y':100};
+	animation = setInterval(animate, fps);
+}
+
+function animate() {
+	// clear the screen
+	context.clearRect(0, 0, sketch.offsetWidth, sketch.offsetHeight);
+draw_circle(circle.x, circle.y, 20)
+	// draw something ... draw_circle or context.fillRect
+if(circle.x > sketch.offsetWidth){ 
+dx=dx * -1
+}
+	// move the position by changing the x or y value based on velocity (dx or dy)
+	circle.x+= dx
+}
+function draw_circle(x, y, r) {
+	context.beginPath();
+	context.arc(x, y, r, 0, 2 * Math.PI, true);
+	context.closePath();
+	context.fill();
+}
+// javascript goes here...
+</script>
+</body>
+</html>
